@@ -15,7 +15,7 @@ def main():
     naive_dict, dnq_dict, fortune_dict = {}, {}, {}
     # n = [2, 5, 10, 15]
     n = [2, 5, 10, 20, 30, 40, 60, 80]
-    # # gen(n)
+    gen(n)
     # points = read(10, 1)
     # naive.voronoi(points, bound)
     # dnq.voronoi(points, bound)
@@ -28,25 +28,25 @@ def main():
             if j%10 == 0:
                 print("Running size "+str(i)+" Iteration "+str(j))
             points = read(i, j)
-    #         # begin1 = time.time()
+            begin1 = time.time()
             naive.voronoi(points, bound)
-    #         # end1 = time.time()
-              # runtime1.append(end1 - begin1)
-            # begin2 = time.time()
+            end1 = time.time()
+            runtime1.append(end1 - begin1)
+            begin2 = time.time()
             try:
                 dnq.voronoi(points, bound)
             except:
                 continue
-            # end2 = time.time()
-            # runtime2.append(end2 - begin2)
-    #         begin3 = time.time()
+            end2 = time.time()
+            runtime2.append(end2 - begin2)
+            begin3 = time.time()
             v = fortune.Voronoi(points, bound)
             v.compute()
-            # end3 = time.time()
-            # runtime3.append(end3 - begin3)
-        # naive_dict[i] = runtime1
-        # dnq_dict[i] = runtime2
-        # fortune_dict[i] = runtime3
+            end3 = time.time()
+            runtime3.append(end3 - begin3)
+        naive_dict[i] = runtime1
+        dnq_dict[i] = runtime2
+        fortune_dict[i] = runtime3
     # df1 = pd.DataFrame(naive_dict.items()) 
     # df2 = pd.DataFrame(dnq_dict.items()) 
     # df3 = pd.DataFrame(fortune_dict.items()) 
@@ -55,9 +55,15 @@ def main():
     # df2.to_excel(writer, "dnq_runtime")
     # df3.to_excel(writer, "fortune_runtime")
     # writer.save()
+    path = os.path.join('output', "naive.data")
+    with open(path, 'wb') as f:
+        pickle.dump(naive_dict, f)
     path = os.path.join('output', "dnq.data")
     with open(path, 'wb') as f:
         pickle.dump(dnq_dict, f)
+    path = os.path.join('output', "fortune.data")
+    with open(path, 'wb') as f:
+        pickle.dump(fortune_dict, f)
 
 def plot():
     path = os.path.join('output', "naive_1.data")

@@ -1,5 +1,4 @@
 .DS_Store
-*.md
+/notes/**
 /__pycache__/**
 *.pyc
-/data/**
