@@ -1,4 +1,4 @@
-# Voronoi ALgorithms Implementation and Comparison
+# Voronoi Algorithms Implementation and Comparison
 
 Implementation of Naive, Divide-and-Conquer and Fortune's algorithm for generating Voronoi diagrams
 
