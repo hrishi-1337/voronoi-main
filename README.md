@@ -7,3 +7,5 @@ Implementation of Naive, Divide-and-Conquer and Fortune's algorithm for generati
 ```
 python main.py
 ```
+
+Generates a Voronoi diagram for pointset sizes of 2, 5, 10, 20, 30, 40, 60 and 80 using each method.
